@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7271218710947893653}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.35, z: -0}
+  m_LocalPosition: {x: 0, y: 0.17, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7271218711361502011}
@@ -284,7 +284,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.3
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3783,7 +3783,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 384
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -4829,7 +4829,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7271218711280203843}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.26, z: 0}
+  m_LocalPosition: {x: 0, y: -0.53, z: 0}
   m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7271218711361502011}
@@ -4899,7 +4899,7 @@ GameObject:
   - component: {fileID: 7271218711361501957}
   - component: {fileID: 6159562371417306813}
   - component: {fileID: 7271218711361501958}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player_Ship
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -4936,7 +4936,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0019726306, y: -0.13019402}
+  m_Offset: {x: 0.012182534, y: -0.037174135}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4947,7 +4947,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3224627, y: 0.23961195}
+  m_Size: {x: 0.50850254, y: 0.42565173}
   m_EdgeRadius: 0
 --- !u!50 &7271218711361501957
 Rigidbody2D:
@@ -4983,7 +4983,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0019726306, y: -0.13019402}
+  m_Offset: {x: 0.01, y: -0.036238506}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4994,7 +4994,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3224627, y: 0.23961195}
+  m_Size: {x: 0.5103737, y: 0.427523}
   m_EdgeRadius: 0
 --- !u!114 &7271218711361501958
 MonoBehaviour:
@@ -5012,8 +5012,8 @@ MonoBehaviour:
   rotationTime: 0.1
   canRotate: 0
   spriteRenderer: {fileID: 7271218711418714487}
-  maxHealth: 0
-  particle: {fileID: 0}
+  maxHealth: 100
+  particle: {fileID: 7271218710947893642}
 --- !u!1 &7271218711418714481
 GameObject:
   m_ObjectHideFlags: 0

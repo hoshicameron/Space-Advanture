@@ -51,6 +51,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4537078371606148733, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
+      propertyPath: m_Radius
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 4537078371606148734, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
       propertyPath: maxHealth
       value: 300
@@ -79,6 +83,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 7092721356592506435, guid: 0b94576e4b915354fab244501c11d257, type: 3}
+    - target: {fileID: 4537078372502611731, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4537078372502611733, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
       propertyPath: m_LocalScale.x
       value: 2

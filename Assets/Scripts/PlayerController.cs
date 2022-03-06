@@ -71,8 +71,8 @@ public class PlayerController : MonoBehaviour,IDamageable
    {
       transform.position = new Vector2
       (
-         Mathf.Clamp(rBody2D.position.x, screenBounds.x * -1 - objectWidth, screenBounds.x + objectWidth),
-         Mathf.Clamp(rBody2D.position.y, screenBounds.y * -1 - objectHeight, screenBounds.y + objectHeight)
+         Mathf.Clamp(rBody2D.position.x, screenBounds.x * -1 + objectWidth, screenBounds.x - objectWidth),
+         Mathf.Clamp(rBody2D.position.y, screenBounds.y * -1 + objectHeight, screenBounds.y - objectHeight)
       );
    }
 
@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour,IDamageable
 
    private void OnTriggerEnter2D(Collider2D other)
    {
-      if (other.CompareTag("MeteorController") || other.CompareTag("Enemy"))
+      if (other.CompareTag("Meteor") || other.CompareTag("Enemy"))
       {
          // Add Damage to other object
          other.GetComponent<IDamageable>().GotHit(101);
@@ -130,6 +130,6 @@ public class PlayerController : MonoBehaviour,IDamageable
 
    private void OnParticleCollision(GameObject other)
    {
-      print("Particle collision");
+      GotHit(10);
    }
 }

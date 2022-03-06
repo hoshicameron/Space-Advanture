@@ -57,6 +57,7 @@ public class EnemyController : MonoBehaviour,IDamageable
             // Todo play explosion effect
             // Todo disable object
 
+            EnemySpawner.Instance.CheckForSpawnNewWave(gameObject);
             Destroy(gameObject);
         }
     }
