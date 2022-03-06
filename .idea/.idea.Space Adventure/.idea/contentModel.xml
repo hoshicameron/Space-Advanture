@@ -7,12 +7,14 @@
         <e p="Scripts" t="Include">
           <e p="EnemyController.cs" t="Include" />
           <e p="EnemySpawner.cs" t="Include" />
+          <e p="GameManager.cs" t="Include" />
           <e p="HelperMethods.cs" t="Include" />
           <e p="IDamageable.cs" t="Include" />
           <e p="MeteorController.cs" t="Include" />
           <e p="MeteorSpawner.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
           <e p="SingletonMonoBehaviour.cs" t="Include" />
+          <e p="UIManager.cs" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">

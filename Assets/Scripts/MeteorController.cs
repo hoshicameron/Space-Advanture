@@ -9,8 +9,6 @@ public class MeteorController : MonoBehaviour,IDamageable
     [SerializeField] private float minRotationSpeed = 0;
     [SerializeField] private float maxRotationSpeed = 0;
 
-
-    [SerializeField] private int damageAmount = 0;
     [SerializeField] private int maxHealth = 0;
     [SerializeField] private GameObject[] meteors;
 
@@ -56,6 +54,7 @@ public class MeteorController : MonoBehaviour,IDamageable
 
     private void HandleMovementY()
     {
+        if(!moveOnY)     return;
         var tempPosition = transform.position;
         tempPosition.y += speedY * Time.deltaTime * -1;
         transform.position = tempPosition;

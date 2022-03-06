@@ -36,6 +36,9 @@ public class PlayerController : MonoBehaviour,IDamageable
 
       currentHealth = maxHealth;
 
+      UIManager.Instance.SetHealthSliderMaxValue(maxHealth);
+      UIManager.Instance.UpdateHealthSlider(maxHealth);
+
    }
 
    private void Update()
@@ -60,6 +63,8 @@ public class PlayerController : MonoBehaviour,IDamageable
 
    private void FixedUpdate()
    {
+      if(!GameManager.Instance.GetCanPlay())   return;
+
       rBody2D.MovePosition(rBody2D.position+movement*speed*Time.fixedDeltaTime);
 
       RotateTowardMousePosition();
@@ -104,10 +109,13 @@ public class PlayerController : MonoBehaviour,IDamageable
       currentHealth -= damage;
       currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
+      //Update Health UI
+      UIManager.Instance.UpdateHealthSlider(currentHealth);
+
       if (currentHealth == 0)
       {
-         // Todo show Game Over screen
-         // Todo stop game
+         GameManager.Instance.GameOver();
+
          // Todo Play explosion sound effect
          // Todo play explosion vfx
 
