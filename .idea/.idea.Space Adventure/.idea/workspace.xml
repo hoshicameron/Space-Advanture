@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="356b394f-30f0-487c-b724-d7f8359e6fb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Space Adventure/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Space Adventure/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Space Adventure/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Space Adventure/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Meteor/prefab_Meteor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Meteor/prefab_Meteor.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Meteor/prefab_Meteor_Big1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Meteor/prefab_Meteor_Big1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Meteor/prefab_Meteor_Big2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Meteor/prefab_Meteor_Big2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Meteor/prefab_Meteor_Small1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Meteor/prefab_Meteor_Small1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Meteor/prefab_Meteor_Small2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Meteor/prefab_Meteor_Small2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player_Ship.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player_Ship.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnemyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EnemyController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MeteorController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MeteorController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/simpleSpace_tilesheet.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/simpleSpace_tilesheet.png.meta" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -210,12 +197,12 @@
       <workItem from="1646396812853" duration="6150000" />
       <workItem from="1646466102898" duration="12831000" />
       <workItem from="1646509257302" duration="5730000" />
-      <workItem from="1646546808824" duration="9136000" />
+      <workItem from="1646546808824" duration="9140000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33847000" />
+    <option name="totallyTimeSpent" value="33851000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -227,7 +214,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.24962178" />
