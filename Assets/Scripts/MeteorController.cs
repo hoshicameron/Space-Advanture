@@ -4,13 +4,24 @@ using UnityEngine;
 
 public class MeteorController : MonoBehaviour,IDamageable
 {
+    [Header("Movement")]
     [SerializeField] private float minSpeed = 0;
     [SerializeField] private float maxSpeed = 0;
     [SerializeField] private float minRotationSpeed = 0;
     [SerializeField] private float maxRotationSpeed = 0;
-
+    [Header("Health And XP")]
+    [SerializeField] private int xpOnDestroy = 0;
     [SerializeField] private int maxHealth = 0;
+    [Header("Spawn on GameObject destroy ")]
     [SerializeField] private GameObject[] meteors;
+    [Header("Effects")]
+    [SerializeField] private GameObject hitEffect;
+    [SerializeField] private GameObject explosionEffect;
+    [Header("Sounds")]
+    [SerializeField] private AudioClip[] hitAudioClips;
+    [SerializeField] private AudioClip explosionAudioClip;
+    [Range(0f,1f)][SerializeField] private float hitVolume = 0;
+
 
     private int currentHealth;
 
@@ -20,9 +31,13 @@ public class MeteorController : MonoBehaviour,IDamageable
     private float zRotation = 0f;
     private Vector2 direction;
 
+    private AudioSource audioSource;
+
     private void Start()
     {
         currentHealth=maxHealth;
+        audioSource = GetComponent<AudioSource>();
+
 
         rotationSpeed = Random.Range(minRotationSpeed, maxRotationSpeed);
 
@@ -66,26 +81,31 @@ public class MeteorController : MonoBehaviour,IDamageable
         transform.rotation=Quaternion.AngleAxis(zRotation,Vector3.forward);
     }
 
-    private void OnParticleCollision(GameObject other)
-    {
-        GotHit(10);
-    }
 
-    public void GotHit(int damage)
+    public void GotHit(int damage,Vector3 position)
     {
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth,0, maxHealth);
 
-        // Todo play hitSound
+        // Play hitSound
+        audioSource.PlayOneShot(hitAudioClips[Random.Range(0, hitAudioClips.Length)], hitVolume);
+
+        // Play hit effect
+        Instantiate(hitEffect, position, Quaternion.identity);
 
         if (currentHealth == 0)
         {
-            // Todo Add xp to player
+            GameManager.Instance.UpdateScore(xpOnDestroy);
             // Todo play explosion sound
-            // Todo play explosion effect
+
+            // Play explosion effect
+            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+
             // Todo disable gameobject to reuse it with pool system
 
             SpawnMeteors();
+            if(Random.Range(1,10)>6)
+                CollectableSpawner.Instance.SpawnCollectables(transform.position);
             Destroy(gameObject);
         }
     }

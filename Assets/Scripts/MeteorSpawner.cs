@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class MeteorSpawner : MonoBehaviour
@@ -7,8 +8,9 @@ public class MeteorSpawner : MonoBehaviour
     [SerializeField] private MeteorController[] meteors=null;
     [SerializeField] private float minInterval=0;
     [SerializeField] private float maxInterval=0;
-    [SerializeField] private int minSpawnCount;
-    [SerializeField] private int maxSpawnCount;
+    [SerializeField] private int minSpawnCount=0;
+    [SerializeField] private int maxSpawnCount=0;
+
 
     private float screenWidth;
 

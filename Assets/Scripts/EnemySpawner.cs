@@ -8,9 +8,10 @@ public class EnemySpawner : SingletonMonoBehaviour<EnemySpawner>
     [SerializeField] private float waitTime=0;
     [SerializeField] private int minSpawnCount;
     [SerializeField] private int maxSpawnCount;
+    [SerializeField] private float delayBetweenSpawns;
 
     private float screenWidth;
-    public List<GameObject> spawnedEnemies;
+    private List<GameObject> spawnedEnemies=new List<GameObject>();
 
     private void Start()
     {
@@ -29,7 +30,7 @@ public class EnemySpawner : SingletonMonoBehaviour<EnemySpawner>
 
     private void SpawnNewWaveOfEnemies()
     {
-        if (spawnedEnemies.Count > 0) return;
+        if (spawnedEnemies.Count > 0)   return;
 
         int randomSpawnNumber = Random.Range(minSpawnCount, maxSpawnCount);
         for (int i = 0; i < randomSpawnNumber; i++)
@@ -44,7 +45,8 @@ public class EnemySpawner : SingletonMonoBehaviour<EnemySpawner>
         }
 
 
-        // Todo Increase UI wave count
+        GameManager.Instance.UpdateSurvivedWave(1);
+        CollectableSpawner.Instance.SpawnCollectables(transform.position);
 
     }
 

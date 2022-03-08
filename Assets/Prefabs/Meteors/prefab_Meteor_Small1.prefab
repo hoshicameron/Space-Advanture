@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &421693506569360762
+--- !u!1001 &5976288533335588497
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -53,63 +53,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4537078371606148733, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
       propertyPath: m_Radius
-      value: 0.7
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4537078371606148734, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
       propertyPath: maxHealth
-      value: 400
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4537078371606148734, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
-      propertyPath: meteors.Array.size
-      value: 4
+      propertyPath: xpOnDestroy
+      value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 4537078371606148734, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
-      propertyPath: meteors.Array.data[0]
-      value: 
-      objectReference: {fileID: 7784184418335459566, guid: fc6e97a93356b9c4d90abdc2a704c333, type: 3}
-    - target: {fileID: 4537078371606148734, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
-      propertyPath: meteors.Array.data[1]
-      value: 
-      objectReference: {fileID: 7784184418335459566, guid: f2d0cd3f5a4f6f14d9c8748d9922074c, type: 3}
-    - target: {fileID: 4537078371606148734, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
-      propertyPath: meteors.Array.data[2]
-      value: 
-      objectReference: {fileID: 7784184418335459566, guid: f2d0cd3f5a4f6f14d9c8748d9922074c, type: 3}
-    - target: {fileID: 4537078371606148734, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
-      propertyPath: meteors.Array.data[3]
-      value: 
-      objectReference: {fileID: 7784184418335459566, guid: fc6e97a93356b9c4d90abdc2a704c333, type: 3}
     - target: {fileID: 4537078371606148735, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
       propertyPath: m_Name
-      value: prefab_Meteor_Big2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4537078372502611731, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
-      propertyPath: m_Size.x
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 4537078372502611731, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
-      propertyPath: m_Size.y
-      value: 0.75
+      value: prefab_Meteor_Small1
       objectReference: {fileID: 0}
     - target: {fileID: 4537078372502611731, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 7224384025990158940, guid: 0b94576e4b915354fab244501c11d257, type: 3}
+      objectReference: {fileID: -3059740931890330047, guid: 0b94576e4b915354fab244501c11d257, type: 3}
     - target: {fileID: 4537078372502611731, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4537078372502611733, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
+    - target: {fileID: 5586139115879438668, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 0.004
       objectReference: {fileID: 0}
-    - target: {fileID: 4537078372502611733, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
+    - target: {fileID: 9086754200216961200, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4537078372502611733, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2
+    - target: {fileID: 9086754200216961200, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}

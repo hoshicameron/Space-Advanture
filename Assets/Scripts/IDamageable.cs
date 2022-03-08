@@ -5,5 +5,5 @@ using UnityEngine;
 
 public interface IDamageable
 {
-    void GotHit(int damage);
+    void GotHit(int damage,Vector3 position);
 }

@@ -13,11 +13,23 @@ public class PlayerController : MonoBehaviour,IDamageable
    [Header("Health")]
    [SerializeField] private int maxHealth = 0;
    [Header("Gun")]
-   [SerializeField] private ParticleSystem particle;
+   [SerializeField] private ParticleSystem gunParticle;
+   [Header("Effects")]
+   [SerializeField] private GameObject hitEffect;
+   [SerializeField] private GameObject explosionEffect;
+   [Header("Sounds")]
+   [SerializeField] private AudioClip shootAudioClip;
+   [Range(0f,1f)][SerializeField] private float shootVolume = 0;
+   [SerializeField] private GameObject hitSoundPrefab;
+   [SerializeField] private GameObject explosionSoundPrefab;
+
 
    private Rigidbody2D rBody2D;
    private Vector2 movement;
    private Camera camera1;
+   private AudioSource audioSource;
+
+   private List<ParticleCollisionEvent> collisionEvents=new List<ParticleCollisionEvent>();
 
    private Vector2 screenBounds;
    private float objectWidth;
@@ -30,6 +42,8 @@ public class PlayerController : MonoBehaviour,IDamageable
    {
       camera1 = Camera.main;
       rBody2D = GetComponent<Rigidbody2D>();
+      audioSource = GetComponent<AudioSource>();
+
 
       screenBounds = HelperMethods.GetScreenBounds(camera1);
       HelperMethods.GetObjectHeightAndWidth(spriteRenderer,out objectWidth,out objectHeight);
@@ -46,10 +60,31 @@ public class PlayerController : MonoBehaviour,IDamageable
       MovementVector();
       if (Input.GetKeyDown(KeyCode.Space))
       {
-         canFire = !canFire;
+         Shoot();
+      }
+   }
 
-         var particleEmission = particle.emission;
-         particleEmission.enabled = canFire;
+   private void Shoot()
+   {
+
+      canFire = !canFire;
+
+      // Start Emission
+      var particleEmission = gunParticle.emission;
+      particleEmission.enabled = canFire;
+
+      // Play shoot sound
+      if (canFire && !audioSource.isPlaying)
+      {
+         print("Play");
+         audioSource.clip = shootAudioClip;
+         audioSource.volume = shootVolume;
+         audioSource.loop = true;
+         audioSource.Play();
+      } else
+      {
+         print("Stop");
+         audioSource.Stop();
       }
    }
 
@@ -104,7 +139,7 @@ public class PlayerController : MonoBehaviour,IDamageable
       rBody2D.rotation = smoothedAngle;
    }
 
-   public void GotHit(int damage)
+   public void GotHit(int damage,Vector3 position)
    {
       currentHealth -= damage;
       currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
@@ -112,12 +147,22 @@ public class PlayerController : MonoBehaviour,IDamageable
       //Update Health UI
       UIManager.Instance.UpdateHealthSlider(currentHealth);
 
+      // Play hit Effect
+      GameObject hitparticle = PoolManager.Instance.ReuseGameObject(hitEffect, position, Quaternion.identity);
+      hitEffect.SetActive(true);
+
+      // Play hitSound
+      GameObject hitSound = PoolManager.Instance.ReuseGameObject(hitSoundPrefab, position, Quaternion.identity);
+      hitSound.SetActive(true);
+
       if (currentHealth == 0)
       {
          GameManager.Instance.GameOver();
 
          // Todo Play explosion sound effect
-         // Todo play explosion vfx
+
+         // Play explosion effect
+         GameObject expEffect = PoolManager.Instance.ReuseGameObject(explosionEffect, position, Quaternion.identity);
 
          Destroy(gameObject);
       }
@@ -128,16 +173,28 @@ public class PlayerController : MonoBehaviour,IDamageable
       if (other.CompareTag("Meteor") || other.CompareTag("Enemy"))
       {
          // Add Damage to other object
-         other.GetComponent<IDamageable>().GotHit(101);
+         other.GetComponent<IDamageable>().GotHit(101,other.transform.position);
 
          // Add damage to player
-         GotHit(1000);
+         GotHit(1000,other.transform.position);
       }
 
    }
 
-   private void OnParticleCollision(GameObject other)
+   public void GotHealth()
    {
-      GotHit(10);
+      currentHealth = maxHealth;
+      UIManager.Instance.UpdateHealthSlider(currentHealth);
+   }
+
+   public void GotPowerUp()
+   {
+      var gunParticleEmission = gunParticle.emission;
+      var rateOverTime =gunParticleEmission.rateOverTime.constant;
+      rateOverTime+=1;
+      rateOverTime = Mathf.Clamp(rateOverTime, 3, 7);
+      gunParticleEmission.rateOverTime = rateOverTime;
+
+
    }
 }

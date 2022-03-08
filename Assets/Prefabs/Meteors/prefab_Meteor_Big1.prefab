@@ -60,6 +60,10 @@ PrefabInstance:
       value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 4537078371606148734, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
+      propertyPath: xpOnDestroy
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537078371606148734, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
       propertyPath: meteors.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -98,6 +102,18 @@ PrefabInstance:
     - target: {fileID: 4537078372502611733, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
       propertyPath: m_LocalScale.z
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5586139115879438668, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 9086754200216961200, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9086754200216961200, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfc3823e02ec6244d9d222ae31dc16f7, type: 3}
