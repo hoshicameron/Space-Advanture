@@ -24,13 +24,13 @@ public class EnemySpawner : SingletonMonoBehaviour<EnemySpawner>
     {
 
         yield return new WaitForSeconds(waitTime);
-        SpawnNewWaveOfEnemies();
+        yield return SpawnNewWaveOfEnemies();
 
     }
 
-    private void SpawnNewWaveOfEnemies()
+    private IEnumerator SpawnNewWaveOfEnemies()
     {
-        if (spawnedEnemies.Count > 0)   return;
+        if (spawnedEnemies.Count > 0) yield break;
 
         int randomSpawnNumber = Random.Range(minSpawnCount, maxSpawnCount);
         for (int i = 0; i < randomSpawnNumber; i++)
@@ -38,10 +38,12 @@ public class EnemySpawner : SingletonMonoBehaviour<EnemySpawner>
             Vector3 randomPosition=new Vector3(Random.Range(-screenWidth,screenWidth),
                 transform.position.y + Random.Range(-0.5f,0.5f),0);
             GameObject newEnemy =
-                Instantiate(enemies[Random.Range(0, enemies.Length)], randomPosition,
+                PoolManager.Instance.ReuseGameObject(enemies[Random.Range(0, enemies.Length)], randomPosition,
                     Quaternion.identity) as GameObject;
-
+            newEnemy.SetActive(true);
             spawnedEnemies.Add(newEnemy);
+
+            yield return new WaitForSeconds(delayBetweenSpawns);
         }
 
 

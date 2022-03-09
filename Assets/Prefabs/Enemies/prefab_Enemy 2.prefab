@@ -168,7 +168,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSpeed:
       serializedVersion: 2
-      minMaxState: 3
+      minMaxState: 0
       scalar: 10
       minScalar: 5
       maxCurve:
@@ -866,7 +866,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 1.1
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4878,6 +4878,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4466742540093569968, guid: c79d13e814951a74f8f6c0ef66313a52, type: 3}
+      propertyPath: gunParticles.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466742540093569968, guid: c79d13e814951a74f8f6c0ef66313a52, type: 3}
       propertyPath: gunParticle.Array.data[0]
       value: 
       objectReference: {fileID: 6944269014792500047}
@@ -4885,9 +4889,17 @@ PrefabInstance:
       propertyPath: gunParticle.Array.data[1]
       value: 
       objectReference: {fileID: 5906268381615265916}
+    - target: {fileID: 4466742540093569968, guid: c79d13e814951a74f8f6c0ef66313a52, type: 3}
+      propertyPath: gunParticles.Array.data[0]
+      value: 
+      objectReference: {fileID: 6944269014792500047}
+    - target: {fileID: 4466742540093569968, guid: c79d13e814951a74f8f6c0ef66313a52, type: 3}
+      propertyPath: gunParticles.Array.data[1]
+      value: 
+      objectReference: {fileID: 5906268381615265916}
     - target: {fileID: 4466742540093569970, guid: c79d13e814951a74f8f6c0ef66313a52, type: 3}
       propertyPath: m_Name
-      value: Enemy 2
+      value: prefab_Enemy 2
       objectReference: {fileID: 0}
     - target: {fileID: 4466742540093569971, guid: c79d13e814951a74f8f6c0ef66313a52, type: 3}
       propertyPath: m_RootOrder
@@ -4940,6 +4952,10 @@ PrefabInstance:
     - target: {fileID: 4466742540547680669, guid: c79d13e814951a74f8f6c0ef66313a52, type: 3}
       propertyPath: startDelay.minMaxState
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466742540547680669, guid: c79d13e814951a74f8f6c0ef66313a52, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 4466742540547680670, guid: c79d13e814951a74f8f6c0ef66313a52, type: 3}
       propertyPath: m_Name

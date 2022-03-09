@@ -6,11 +6,13 @@ using Random = UnityEngine.Random;
 
 public class CollectableSpawner : SingletonMonoBehaviour<CollectableSpawner>
 {
-    [SerializeField] private Collectable[] collectables;
+    [SerializeField] private GameObject[] collectables;
 
     public void SpawnCollectables(Vector3 position)
     {
-        Collectable collectable = Random.Range(1, 10) > 7 ? collectables[0] : collectables[1];
-        Instantiate(collectable, position, quaternion.identity);
+        GameObject collectable = Random.Range(1, 10) > 7 ? collectables[0] : collectables[1];
+
+        GameObject spawnedObject=PoolManager.Instance.ReuseGameObject(collectable, position, quaternion.identity);
+        spawnedObject.SetActive(true);
     }
 }

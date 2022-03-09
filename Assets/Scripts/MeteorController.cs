@@ -13,14 +13,13 @@ public class MeteorController : MonoBehaviour,IDamageable
     [SerializeField] private int xpOnDestroy = 0;
     [SerializeField] private int maxHealth = 0;
     [Header("Spawn on GameObject destroy ")]
-    [SerializeField] private GameObject[] meteors;
+    [SerializeField] private GameObject[] meteors=null;
     [Header("Effects")]
-    [SerializeField] private GameObject hitEffect;
-    [SerializeField] private GameObject explosionEffect;
+    [SerializeField] private GameObject hitEffectPrefab=null;
+    [SerializeField] private GameObject explosionEffectPrefab=null;
     [Header("Sounds")]
-    [SerializeField] private AudioClip[] hitAudioClips;
-    [SerializeField] private AudioClip explosionAudioClip;
-    [Range(0f,1f)][SerializeField] private float hitVolume = 0;
+    [SerializeField] private GameObject hitSoundPrefab=null;
+    [SerializeField] private GameObject explosionSoundPrefab = null;
 
 
     private int currentHealth;
@@ -33,11 +32,10 @@ public class MeteorController : MonoBehaviour,IDamageable
 
     private AudioSource audioSource;
 
-    private void Start()
+    private void OnEnable()
     {
         currentHealth=maxHealth;
         audioSource = GetComponent<AudioSource>();
-
 
         rotationSpeed = Random.Range(minRotationSpeed, maxRotationSpeed);
 
@@ -88,28 +86,47 @@ public class MeteorController : MonoBehaviour,IDamageable
         currentHealth = Mathf.Clamp(currentHealth,0, maxHealth);
 
         // Play hitSound
-        audioSource.PlayOneShot(hitAudioClips[Random.Range(0, hitAudioClips.Length)], hitVolume);
+        GameObject hitSound = PoolManager.Instance.ReuseGameObject(hitSoundPrefab, position, Quaternion.identity);
+        hitSound.SetActive(true);
 
         // Play hit effect
-        Instantiate(hitEffect, position, Quaternion.identity);
+        GameObject hitEffect = PoolManager.Instance.ReuseGameObject(hitEffectPrefab, position, Quaternion.identity);
+        hitEffect.SetActive(true);
+
 
         if (currentHealth == 0)
         {
-            GameManager.Instance.UpdateScore(xpOnDestroy);
-            // Todo play explosion sound
-
-            // Play explosion effect
-            Instantiate(explosionEffect, transform.position, Quaternion.identity);
-
-            // Todo disable gameobject to reuse it with pool system
-
-            SpawnMeteors();
-            if(Random.Range(1,10)>6)
-                CollectableSpawner.Instance.SpawnCollectables(transform.position);
-            Destroy(gameObject);
+            StartDeathSequence();
         }
     }
 
+    private void StartDeathSequence()
+    {
+        print("explode");
+        GameManager.Instance.UpdateScore(xpOnDestroy);
+
+        // Play explosion sound
+        GameObject explosionSound =
+            PoolManager.Instance.ReuseGameObject(explosionSoundPrefab, transform.position, Quaternion.identity);
+        explosionSound.SetActive(true);
+
+        // Play explosion effect
+        GameObject explosionEffect =
+            PoolManager.Instance.ReuseGameObject(explosionEffectPrefab, transform.position, Quaternion.identity);
+        explosionEffect.SetActive(true);
+
+        SpawnMeteors();
+
+        // Randomize spawn collectables
+        if (Random.Range(1, 10) > 6)
+            CollectableSpawner.Instance.SpawnCollectables(transform.position);
+
+        gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// If there are meteors to spawn, spawn them
+    /// </summary>
     private void SpawnMeteors()
     {
         if (meteors.Length == 0) return;
@@ -117,8 +134,9 @@ public class MeteorController : MonoBehaviour,IDamageable
         for (int i = 0; i < meteors.Length; i++)
         {
             Vector3 rnd = Random.insideUnitSphere;
-            Instantiate(meteors[i], new Vector3(transform.position.x +rnd.x,
+            GameObject newGameObject = PoolManager.Instance.ReuseGameObject(meteors[i], new Vector3(transform.position.x +rnd.x,
                 transform.position.y +rnd.y, 0), Quaternion.identity);
+            newGameObject.SetActive(true);
         }
     }
 }

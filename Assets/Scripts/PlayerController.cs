@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Packages.Rider.Editor.UnitTesting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour,IDamageable
@@ -13,7 +14,7 @@ public class PlayerController : MonoBehaviour,IDamageable
    [Header("Health")]
    [SerializeField] private int maxHealth = 0;
    [Header("Gun")]
-   [SerializeField] private ParticleSystem gunParticle;
+   [SerializeField] private ParticleSystem[] gunParticles;
    [Header("Effects")]
    [SerializeField] private GameObject hitEffect;
    [SerializeField] private GameObject explosionEffect;
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour,IDamageable
    private AudioSource audioSource;
 
    private List<ParticleCollisionEvent> collisionEvents=new List<ParticleCollisionEvent>();
+   private float currentNumberOfParticles = 0;
 
    private Vector2 screenBounds;
    private float objectWidth;
@@ -62,6 +64,18 @@ public class PlayerController : MonoBehaviour,IDamageable
       {
          Shoot();
       }
+
+      PlayShootSound();
+
+      Test();
+   }
+
+   private void Test()
+   {
+      if (Input.GetKeyDown(KeyCode.U))
+      {
+         GotPowerUp();
+      }
    }
 
    private void Shoot()
@@ -70,11 +84,15 @@ public class PlayerController : MonoBehaviour,IDamageable
       canFire = !canFire;
 
       // Start Emission
-      var particleEmission = gunParticle.emission;
-      particleEmission.enabled = canFire;
+      foreach (ParticleSystem gunParticle in gunParticles)
+      {
+         var particleEmission = gunParticle.emission;
+         particleEmission.enabled = canFire;
+      }
+
 
       // Play shoot sound
-      if (canFire && !audioSource.isPlaying)
+      /*if (canFire && !audioSource.isPlaying)
       {
          print("Play");
          audioSource.clip = shootAudioClip;
@@ -85,7 +103,17 @@ public class PlayerController : MonoBehaviour,IDamageable
       {
          print("Stop");
          audioSource.Stop();
+      }*/
+   }
+
+   private void PlayShootSound()
+   {
+      if (gunParticles[0].particleCount > currentNumberOfParticles)
+      {
+         audioSource.PlayOneShot(shootAudioClip,shootVolume);
       }
+
+      currentNumberOfParticles = gunParticles[0].particleCount;
    }
 
    private void MovementVector()
@@ -148,8 +176,8 @@ public class PlayerController : MonoBehaviour,IDamageable
       UIManager.Instance.UpdateHealthSlider(currentHealth);
 
       // Play hit Effect
-      GameObject hitparticle = PoolManager.Instance.ReuseGameObject(hitEffect, position, Quaternion.identity);
-      hitEffect.SetActive(true);
+      GameObject hitParticle = PoolManager.Instance.ReuseGameObject(hitEffect, position, Quaternion.identity);
+      hitParticle.SetActive(true);
 
       // Play hitSound
       GameObject hitSound = PoolManager.Instance.ReuseGameObject(hitSoundPrefab, position, Quaternion.identity);
@@ -163,6 +191,7 @@ public class PlayerController : MonoBehaviour,IDamageable
 
          // Play explosion effect
          GameObject expEffect = PoolManager.Instance.ReuseGameObject(explosionEffect, position, Quaternion.identity);
+         expEffect.SetActive(true);
 
          Destroy(gameObject);
       }
@@ -189,12 +218,13 @@ public class PlayerController : MonoBehaviour,IDamageable
 
    public void GotPowerUp()
    {
-      var gunParticleEmission = gunParticle.emission;
-      var rateOverTime =gunParticleEmission.rateOverTime.constant;
-      rateOverTime+=1;
-      rateOverTime = Mathf.Clamp(rateOverTime, 3, 7);
-      gunParticleEmission.rateOverTime = rateOverTime;
-
-
+      foreach (ParticleSystem gunParticle in gunParticles)
+      {
+         var gunParticleEmission = gunParticle.emission;
+         var rateOverTime =gunParticleEmission.rateOverTime.constant;
+         rateOverTime+=1;
+         rateOverTime = Mathf.Clamp(rateOverTime, 3.0f, 7.1f);
+         gunParticleEmission.rateOverTime = rateOverTime;
+      }
    }
 }

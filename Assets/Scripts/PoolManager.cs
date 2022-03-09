@@ -26,22 +26,23 @@ public class PoolManager : SingletonMonoBehaviour<PoolManager>
 
     private void CreatePool(GameObject prefab, int poolSize)
     {
-        int poolkey=prefab.GetInstanceID();
+        print("Create Pool");
+        int poolKey=prefab.GetInstanceID();
         string prefabName = prefab.name;
 
         GameObject parentGameObject= new GameObject(prefabName+"Anchor");
 
         parentGameObject.transform.parent = poolTransform;
 
-        if (!poolDictionary.ContainsKey(poolkey))
+        if (!poolDictionary.ContainsKey(poolKey))
         {
-            poolDictionary.Add(poolkey,new Queue<GameObject>());
+            poolDictionary.Add(poolKey,new Queue<GameObject>());
             for (int i = 0; i < poolSize; i++)
             {
                 GameObject newGameObject=Instantiate(prefab,parentGameObject.transform) as GameObject;
                 newGameObject.SetActive(false);
 
-                poolDictionary[poolkey].Enqueue(newGameObject);
+                poolDictionary[poolKey].Enqueue(newGameObject);
             }
         }
     }

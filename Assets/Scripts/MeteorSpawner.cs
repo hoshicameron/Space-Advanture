@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 public class MeteorSpawner : MonoBehaviour
 {
-    [SerializeField] private MeteorController[] meteors=null;
+    [SerializeField] private GameObject[] meteors=null;
     [SerializeField] private float minInterval=0;
     [SerializeField] private float maxInterval=0;
     [SerializeField] private int minSpawnCount=0;
@@ -29,7 +29,10 @@ public class MeteorSpawner : MonoBehaviour
             for (int i = 0; i < randomSpawnNumber; i++)
             {
                 Vector3 randomPosition=new Vector3(Random.Range(-screenWidth,screenWidth),transform.position.y,0);
-                Instantiate(meteors[Random.Range(0, meteors.Length)],randomPosition,Quaternion.identity);
+                GameObject newGameObject =
+                    PoolManager.Instance.ReuseGameObject(meteors[Random.Range(0, meteors.Length)], randomPosition,
+                        Quaternion.identity);
+                newGameObject.SetActive(true);
             }
 
             float randomInterval = Random.Range(minInterval, maxInterval);

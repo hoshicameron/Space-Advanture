@@ -168,7 +168,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSpeed:
       serializedVersion: 2
-      minMaxState: 3
+      minMaxState: 0
       scalar: 10
       minScalar: 5
       maxCurve:
@@ -866,7 +866,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 1.1
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4986,7 +4986,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSpeed:
       serializedVersion: 2
-      minMaxState: 3
+      minMaxState: 0
       scalar: 10
       minScalar: 5
       maxCurve:
@@ -5684,7 +5684,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 1.1
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -9692,6 +9692,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4466742540093569968, guid: c79d13e814951a74f8f6c0ef66313a52, type: 3}
+      propertyPath: gunParticles.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466742540093569968, guid: c79d13e814951a74f8f6c0ef66313a52, type: 3}
       propertyPath: gunParticle.Array.data[0]
       value: 
       objectReference: {fileID: 2521943750445107377}
@@ -9701,6 +9705,18 @@ PrefabInstance:
       objectReference: {fileID: 8489279016872464694}
     - target: {fileID: 4466742540093569968, guid: c79d13e814951a74f8f6c0ef66313a52, type: 3}
       propertyPath: gunParticle.Array.data[2]
+      value: 
+      objectReference: {fileID: 1377872906325256920}
+    - target: {fileID: 4466742540093569968, guid: c79d13e814951a74f8f6c0ef66313a52, type: 3}
+      propertyPath: gunParticles.Array.data[0]
+      value: 
+      objectReference: {fileID: 2521943750445107377}
+    - target: {fileID: 4466742540093569968, guid: c79d13e814951a74f8f6c0ef66313a52, type: 3}
+      propertyPath: gunParticles.Array.data[1]
+      value: 
+      objectReference: {fileID: 8489279016872464694}
+    - target: {fileID: 4466742540093569968, guid: c79d13e814951a74f8f6c0ef66313a52, type: 3}
+      propertyPath: gunParticles.Array.data[2]
       value: 
       objectReference: {fileID: 1377872906325256920}
     - target: {fileID: 4466742540093569970, guid: c79d13e814951a74f8f6c0ef66313a52, type: 3}
@@ -9750,6 +9766,10 @@ PrefabInstance:
     - target: {fileID: 4466742540093569971, guid: c79d13e814951a74f8f6c0ef66313a52, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466742540547680669, guid: c79d13e814951a74f8f6c0ef66313a52, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 4466742540547680670, guid: c79d13e814951a74f8f6c0ef66313a52, type: 3}
       propertyPath: m_Name
