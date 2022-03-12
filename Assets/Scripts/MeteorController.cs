@@ -102,7 +102,7 @@ public class MeteorController : MonoBehaviour,IDamageable
 
     private void StartDeathSequence()
     {
-        print("explode");
+
         GameManager.Instance.UpdateScore(xpOnDestroy);
 
         // Play explosion sound

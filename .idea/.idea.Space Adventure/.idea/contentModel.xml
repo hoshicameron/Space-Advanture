@@ -13,10 +13,12 @@
           <e p="GunLuncher.cs" t="Include" />
           <e p="HelperMethods.cs" t="Include" />
           <e p="IDamageable.cs" t="Include" />
+          <e p="MainMenuUI.cs" t="Include" />
           <e p="MeteorController.cs" t="Include" />
           <e p="MeteorSpawner.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
           <e p="PoolManager.cs" t="Include" />
+          <e p="ShipButton.cs" t="Include" />
           <e p="Shredder.cs" t="Include" />
           <e p="SingletonMonoBehaviour.cs" t="Include" />
           <e p="SoundPlayer.cs" t="Include" />

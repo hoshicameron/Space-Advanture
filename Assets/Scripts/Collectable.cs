@@ -22,13 +22,11 @@ public class Collectable : MonoBehaviour
             {
                 case CollactableType.Health:
                     other.GetComponent<PlayerController>().GotHealth();
-                    // Todo Disable gameobject to use pool system
-                    Destroy(gameObject);
+                    gameObject.SetActive(false);
                     break;
                 case CollactableType.PowerUp:
                     other.GetComponent<PlayerController>().GotPowerUp();
-                    // Todo pool system
-                    Destroy(gameObject);
+                    gameObject.SetActive(false);
                     break;
                 case CollactableType.None:
                     break;

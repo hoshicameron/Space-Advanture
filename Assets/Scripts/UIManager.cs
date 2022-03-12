@@ -21,6 +21,8 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
     [SerializeField] private GameObject gameOverMenu=null;
     [SerializeField] private Button gameOver_MainMenuButton=null;
     [SerializeField] private Button gameOver_RestartButton=null;
+    [SerializeField] private TextMeshProUGUI currentWaveText=null;
+    [SerializeField] private TextMeshProUGUI BestWaveText=null;
     [SerializeField] private TextMeshProUGUI currentScoreText=null;
     [SerializeField] private TextMeshProUGUI BestScoreText=null;
 
@@ -48,7 +50,7 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
 
     private void LoadMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Scene_MainMenu");
     }
 
     public void UpdateScoreText(string scoreText)
@@ -60,13 +62,6 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
     {
         this.waveText.SetText($"Waves: {waveText}");
     }
-
-    public void UpdateHighScoreText(string currentScore, string bestScore)
-    {
-        currentScoreText.SetText(currentScore);
-        BestScoreText.SetText(bestScore);
-    }
-
     public void ShowPauseUI()
     {
         Time.timeScale = 0;
@@ -79,11 +74,15 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
         pauseMenu.SetActive(false);
     }
 
-    public void ShowGameOverUI()
+    public void ShowGameOverUI(string currentWave,string bestWave,string currentScore, string bestScore)
     {
         gameOverMenu.SetActive(true);
 
-        // Todo Update player records
+        currentWaveText.SetText(currentWave);
+        BestWaveText.SetText(bestWave);
+
+        currentScoreText.SetText(currentScore);
+        BestScoreText.SetText(bestScore);
     }
 
     public void UpdateHealthSlider(int value)

@@ -158,13 +158,13 @@ public class EnemyController : MonoBehaviour,IDamageable
     private void KeepWithinScreenVertical()
     {
         Vector3 transformPosition = transform.position;
-        transformPosition.y = Mathf.Clamp(transform.position.y, screenBounds.y * -1 + objectHeight,
+        transformPosition.y = Mathf.Clamp(transform.position.y, screenBounds.y * -1 *0.5f,
             screenBounds.y - objectHeight);
         transform.position = transformPosition;
 
         if (transform.position.y >= screenBounds.y - objectHeight
             ||
-            transform.position.y <= screenBounds.y * -1 + objectHeight)
+            transform.position.y <= screenBounds.y * -1 *0.5f)
         {
             direction *= -1;
         }

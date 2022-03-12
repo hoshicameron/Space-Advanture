@@ -26,7 +26,6 @@ public class PoolManager : SingletonMonoBehaviour<PoolManager>
 
     private void CreatePool(GameObject prefab, int poolSize)
     {
-        print("Create Pool");
         int poolKey=prefab.GetInstanceID();
         string prefabName = prefab.name;
 
